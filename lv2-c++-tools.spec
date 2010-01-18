@@ -6,7 +6,7 @@ Release:	1
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://download.savannah.nongnu.org/releases/ll-plugins/%{name}-%{version}.tar.bz2
-# Source0-md5:	03547cc1c36b3ccb607ea9f1005365a1
+# Source0-md5:	8db2c4124af6ef932002bba9d99ba09f
 URL:		http://freshmeat.net/projects/lv2-c-tools
 BuildRequires:	boost-devel
 BuildRequires:	gtkmm-devel >= 2.8.8
