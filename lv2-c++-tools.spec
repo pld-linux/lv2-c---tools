@@ -10,6 +10,7 @@ Source0:	http://download.savannah.nongnu.org/releases/ll-plugins/%{name}-%{versi
 URL:		http://freshmeat.net/projects/lv2-c-tools
 BuildRequires:	boost-devel
 BuildRequires:	gtkmm-devel >= 2.8.8
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,27 +45,17 @@ Static lv2-c++-tools library.
 %description static -l pl.UTF-8
 Statyczna biblioteka lv2-c++-tools.
 
-%package utils
-Summary:	Utils for lv2-c++-tools
-Summary(pl.UTF-8):	Narzędzia dla lv2-c++-tools
-Group:		Development/Tools
-
-%description utils
-Utils for lv2-c++-tools.
-
-%description utils -l pl.UTF-8
-Narzędzia dla lv2-c++-tools.
-
 %prep
 %setup -q
-%__sed -i -e 's|/sbin/ldconfig -n |/bin/true |g' Makefile.template
+%{__sed} -i -e '/sbin\/ldconfig -n /d' Makefile.template
 
 %build
 ./configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir} \
-	--CFLAGS="%rpmcflags" \
-	--LDFLAGS="%rpmldflags"
+	--CXX="%{__cxx}" \
+	--CFLAGS="%{rpmcppflags} %{rpmcxxflags}" \
+	--LDFLAGS="%{rpmcxxflags} %{rpmldflags}"
 
 %{__make}
 
@@ -83,6 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog README
+%attr(755,root,root) %{_bindir}/lv2peg
+%attr(755,root,root) %{_bindir}/lv2soname
 %attr(755,root,root) %{_libdir}/libpaq.so.*.*.*
 
 %files devel
@@ -93,9 +86,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*.a
-
-%files utils
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/lv2peg
-%attr(755,root,root) %{_bindir}/lv2soname
+%{_libdir}/libpaq.a
+%{_libdir}/liblv2-gui.a
+%{_libdir}/liblv2-plugin.a
