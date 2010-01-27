@@ -76,7 +76,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog README
 %attr(755,root,root) %{_bindir}/lv2peg
 %attr(755,root,root) %{_bindir}/lv2soname
-%attr(755,root,root) %{_libdir}/libpaq.so.*.*.*
+%attr(755,root,root) %{_libdir}/libpaq.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpaq.so.0
 
 %files devel
 %defattr(644,root,root,755)
