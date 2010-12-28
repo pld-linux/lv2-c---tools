@@ -7,7 +7,7 @@ License:	GPL v3+
 Group:		Libraries
 Source0:	http://download.savannah.nongnu.org/releases/ll-plugins/%{name}-%{version}.tar.bz2
 # Source0-md5:	8db2c4124af6ef932002bba9d99ba09f
-URL:		http://freshmeat.net/projects/lv2-c-tools
+URL:		http://ll-plugins.nongnu.org/hacking.html
 BuildRequires:	boost-devel
 BuildRequires:	gtkmm-devel >= 2.8.8
 BuildRequires:	pkgconfig
@@ -22,28 +22,28 @@ Pakiet ten zawiera biblioteki i programy, które powinny przyczynić
 się do łatwiejszego pisania wtyczek LV2.
 
 %package devel
-Summary:	Header files for lv2-c++-tools library
-Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki lv2-c++-tools
+Summary:	Header files for LV2-C++-tools libraries
+Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek LV2-C++-tools
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
-Header files for lv2-c++-tools library.
+Header files for LV2-C++-tools libraries.
 
 %description devel -l pl.UTF-8
-Pliki nagłówkowe biblioteki lv2-c++-tools.
+Pliki nagłówkowe bibliotek LV2-C++-tools.
 
 %package static
-Summary:	Static lv2-c++-tools library
-Summary(pl.UTF-8):	Statyczna biblioteka lv2-c++-tools
+Summary:	Static LV2 libpaq library
+Summary(pl.UTF-8):	Statyczna biblioteka LV2 libpaq
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
-Static lv2-c++-tools library.
+Static LV2 libpaq library.
 
 %description static -l pl.UTF-8
-Statyczna biblioteka lv2-c++-tools.
+Statyczna biblioteka LV2 libpaq.
 
 %prep
 %setup -q
@@ -83,12 +83,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libpaq.so
+%{_libdir}/liblv2-gui.a
+%{_libdir}/liblv2-plugin.a
 %{_includedir}/lv2-c++-tools
-%{_libdir}/libpaq.so
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/lv2-plugin.pc
+%{_pkgconfigdir}/lv2-gui.pc
+%{_pkgconfigdir}/paq.pc
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libpaq.a
-%{_libdir}/liblv2-gui.a
-%{_libdir}/liblv2-plugin.a
