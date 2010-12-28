@@ -26,6 +26,8 @@ Summary:	Header files for LV2-C++-tools libraries
 Summary(pl.UTF-8):	Pliki nagłówkowe bibliotek LV2-C++-tools
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel
+# lv2-gui additionally gtkmm-devel >= 2.6.0
 
 %description devel
 Header files for LV2-C++-tools libraries.
