@@ -11,6 +11,7 @@ URL:		http://ll-plugins.nongnu.org/hacking.html
 BuildRequires:	boost-devel
 BuildRequires:	gtkmm-devel >= 2.8.8
 BuildRequires:	pkgconfig
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
