@@ -1,13 +1,14 @@
 Summary:	A LV2 Development SDK
 Summary(pl.UTF-8):	Narzędzia programistyczne LV2
 Name:		lv2-c++-tools
-Version:	1.0.3
+Version:	1.0.4
 Release:	1
 License:	GPL v3+
 Group:		Libraries
 Source0:	http://download.savannah.nongnu.org/releases/ll-plugins/%{name}-%{version}.tar.bz2
-# Source0-md5:	8db2c4124af6ef932002bba9d99ba09f
+# Source0-md5:	2468f8750bae1d57300853479846e5ed
 URL:		http://ll-plugins.nongnu.org/hacking.html
+BuildRequires:	bash >= 3.0
 BuildRequires:	boost-devel
 BuildRequires:	gtkmm-devel >= 2.8.8
 BuildRequires:	pkgconfig
